@@ -66,6 +66,86 @@
       </div>
   </div>
 
+  <div class="modal fade" id="modal-small-update" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+          <form action="/update-sales" method="post">
+          @csrf
+              <div class="modal-content">
+                  <div class="modal-body">
+                  <div class="modal-title mb-3"><strong>Update record</strong></div>
+                  <input id="id" class="form-control" type="text" name="id" hidden>
+                  <div class="row mb-3">
+                    <label for="inputText" class="col-sm-2 col-form-label">Nominal</label>
+                    <div class="col-sm-10">
+                      <input type="text" id="nominal" class="form-control" name="nominal">
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label for="inputText" class="col-sm-2 col-form-label">Tanggal</label>
+                    <div class="col-sm-10">
+                      <input type="date" id="tgl" class="form-control" name="tgl">
+                    </div>
+                  </div>
+                  </div>
+                  <div class="modal-footer">
+                  <a href="" class="btn btn-link link-secondary me-auto" data-bs-dismiss="modal">Batal</a>
+                  <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Add</button>
+                  </div>
+              </div>
+          </form>
+      </div>
+  </div>
+
+  <div class="modal fade" id="modal-small-add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+          <form action="/add-sales" method="post">
+          @csrf
+              <div class="modal-content">
+                  <div class="modal-body">
+                  <div class="modal-title mb-3"><strong>Apakah anda yakin?</strong></div>
+                  <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label">Handler</label>
+                    <div class="col-sm-10">
+                      <select class="form-select" name="user_id" aria-label="Default select example">
+                        <option selected>Pilih user yang tersedia</option>
+                        @foreach($user as $data)
+                        <option value="{{ $data->id }}">{{ $data->id }} {{ $data->name }}</option>
+                        @endforeach
+                      </select>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label">Jenis</label>
+                    <div class="col-sm-10">
+                      <select class="form-select" name="jenis" aria-label="Default select example">
+                        <option selected>Pilih jenis</option>
+                        <option value="barang">Barang</option>
+                        <option value="jasa">Jasa</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label for="inputText" class="col-sm-2 col-form-label">Nominal</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" name="nominal">
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label for="inputText" class="col-sm-2 col-form-label">Tanggal</label>
+                    <div class="col-sm-10">
+                      <input type="date" class="form-control" name="tgl">
+                    </div>
+                  </div>
+                  </div>
+                  <div class="modal-footer">
+                  <a href="" class="btn btn-link link-secondary me-auto" data-bs-dismiss="modal">Batal</a>
+                  <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Add</button>
+                  </div>
+              </div>
+          </form>
+      </div>
+  </div>
+
   <div class="modal modal-blur fade" id="modal-small-export" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
           <form action="/generate-report" method="post">
@@ -110,6 +190,16 @@
       function myFunction(element) {
           var dataId = element.getAttribute('data-id');
           $("#modal-small #id_data").val( dataId );
+      }
+  </script>
+  <script>
+      function myFunction2(element) {
+          var dataId = element.getAttribute('data-id');
+          var dataNominal = element.getAttribute('data-nominal');
+          var dataTgl = element.getAttribute('data-tgl');
+          $("#modal-small-update #id").val( dataId );
+          $("#modal-small-update #nominal").val( dataNominal );
+          $("#modal-small-update #tgl").val( dataTgl );
       }
   </script>
 </body>

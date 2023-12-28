@@ -65,7 +65,6 @@ class SampleReportExport implements FromCollection, WithHeadings, WithEvents
 
                 $loggedInUser = Auth::user();
 
-                // Set values in cells A1, A3, and A4
                 $sheet->setCellValue('A1', 'Requestor : ' . $loggedInUser->name.'('.$loggedInUser->email.')');
                 $sheet->setCellValue('A3', 'Parameter');
                 $sheet->setCellValue('A4', 'Start Date '.'1 '.$this->month.' '.$this->year);
@@ -74,10 +73,4 @@ class SampleReportExport implements FromCollection, WithHeadings, WithEvents
             },
         ];
     }
-
-    // public function array(): array
-    // {
-    //     // Implement the FromArray concern
-    //     return $this->collection()->toArray();
-    // }
 }

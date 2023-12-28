@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,9 +22,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/sales', [App\Http\Controllers\SalesController::class, 'index'])->name('sales');
-Route::get('/sales-update', [App\Http\Controllers\SalesController::class, 'index'])->name('update-sales');
-Route::get('/sales-delete', [App\Http\Controllers\SalesController::class, 'index'])->name('delete-sales');
+Route::post('/add-sales', [App\Http\Controllers\HomeController::class, 'store'])->name('add-sales');
+Route::post('/update-sales', [App\Http\Controllers\HomeController::class, 'update'])->name('update-sales');
+Route::post('/delete-sales', [App\Http\Controllers\HomeController::class, 'destroy'])->name('delete-sales');
 
 Route::get('/generate', [ReportController::class, 'generate']);
 Route::post('/generate-report', [ReportController::class, 'generateReport']);

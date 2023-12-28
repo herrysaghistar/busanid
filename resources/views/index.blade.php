@@ -18,18 +18,18 @@
         <div class="card">
             <div class="card-body">
               @if (count($errors) > 0)
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <div class="mt-5 alert alert-danger alert-dismissible fade show" role="alert">
                   @foreach ($errors->all() as $error)
                     {{ $error }}<br>
                   @endforeach
                 </div>
               @endif
               @if(session('message'))
-                  <div class="alert alert-success alert-dismissible fade show" role="alert">
+                  <div class="mt-5 alert alert-success alert-dismissible fade show" role="alert">
                       {{ session('message') }}
                   </div>
               @endif
-              <button class="btn btn-outline-primary mt-5" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#modal-small"> Add Record </button>
+              <button class="btn btn-outline-primary mt-5" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#modal-small-add"> Add Record </button>
               <button class="btn btn-outline-warning mt-5" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#modal-small-export"> Export Record </button>
               <h5 class="card-title">Sales Report</h5>
 
@@ -51,7 +51,7 @@
                     <td>{{ $datas->jenis }}</td>
                     <td>{{ $datas->nominal }}</td>
                     <td>{{ \Carbon\Carbon::parse($datas->tgl)->format('d-m-Y') }}</td>
-                    <td><button class="btn btn-outline-warning">edit</button> <button class="btn btn-danger" onclick="myFunction(this)" data-id="{{ $datas->id }}" data-name="'+ data.name +'" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#modal-small">delete</button></td>
+                    <td><button class="btn btn-outline-warning" onclick="myFunction2(this)" data-id="{{ $datas->id }}" data-nominal="{{ $datas->nominal }}" data-tgl="{{ $datas->tgl }}" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#modal-small-update">edit</button> <button class="btn btn-danger" onclick="myFunction(this)" data-id="{{ $datas->id }}"  href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#modal-small">delete</button></td>
                   </tr>
                   @endforeach
                 </tbody>
